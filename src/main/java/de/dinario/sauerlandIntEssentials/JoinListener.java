@@ -17,7 +17,8 @@ public class JoinListener implements Listener {
             ChatColor.GREEN + "Schön, dich zu sehen " + ChatColor.GOLD + "%s" + ChatColor.GOLD + ".",
             ChatColor.GREEN + "Willkommen " + ChatColor.GOLD + "%s" + ChatColor.GREEN + "! Sag hallo!",
             ChatColor.GREEN + "Willkommen " + ChatColor.GOLD + "%s" + ChatColor.GREEN + "! Wir hoffen, du hast Pizza mitgebracht.",
-            ChatColor.GREEN + "Heißen wir " + ChatColor.GOLD + "%s" + ChatColor.GREEN + " herzlich willkommen!"
+            ChatColor.GREEN + "Heißen wir " + ChatColor.GOLD + "%s" + ChatColor.GREEN + " herzlich willkommen!",
+            ChatColor.GREEN + "print(\"hello " + ChatColor.GOLD + "%s" + ChatColor.GREEN + "\")"
     };
 
     @EventHandler
