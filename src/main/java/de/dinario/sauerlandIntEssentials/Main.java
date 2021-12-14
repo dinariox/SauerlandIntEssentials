@@ -1,8 +1,11 @@
 package de.dinario.sauerlandIntEssentials;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public final class Main extends JavaPlugin {
 
@@ -17,6 +20,21 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new ItemBreakingListener(), this);
         pluginManager.registerEvents(new BlockPlacedListener(), this);
 
-        getCommand("broadcastcoordinates").setExecutor(new BroadcastCoordinatesCommand());
+        try {
+            getCommand("broadcastcoordinates").setExecutor(new BroadcastCoordinatesCommand());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Update ping in player list every second
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player player : getServer().getOnlinePlayers()) {
+                    String currentName = player.displayName().toString();
+                    player.setPlayerListName("[" + player.getPing() + "ms] " + ChatColor.WHITE + currentName);
+                }
+            }
+        }.runTaskTimer(this, 0L, 20L);
     }
 }
