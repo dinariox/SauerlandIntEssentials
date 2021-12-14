@@ -7,11 +7,22 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
-
+import java.util.ArrayList;
 public class BlockPlacedListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
-        if (event.getItemInHand().getAmount() == 1 && event.getItemInHand().getType().isBlock()) {
+        ArrayList<Material> seeds = new ArrayList<Material>();
+        seeds.add(Material.BEETROOT_SEEDS);
+        seeds.add(Material.MELON_SEEDS);
+        seeds.add(Material.PUMPKIN_SEEDS);
+        seeds.add(Material.SUGAR_CANE);
+        seeds.add(Material.WHEAT_SEEDS);
+        seeds.add(Material.CARROT);
+        seeds.add(Material.POTATO);
+        seeds.add(Material.NETHER_WART);
+        seeds.add(Material.SWEET_BERRIES);
+        seeds.add(Material.BONE_MEAL);
+        if (event.getItemInHand().getAmount() == 1 && (event.getItemInHand().getType().isBlock() || seeds.contains(event.getItemInHand().getType()))) {
             int brokenItem = -1;
             int replaceItem = -1;
             for (int i = 0; i < event.getPlayer().getInventory().getSize(); i++) {
