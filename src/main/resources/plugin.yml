@@ -1,0 +1,12 @@
+name: SauerlandIntEssentials
+version: '${project.version}'
+main: de.dinario.sauerlandIntEssentials.Main
+api-version: 1.18
+authors: [ dinario, leitzy ]
+description: Custom welcome messages, cat formating and other useful features for our server
+commands:
+  broadcastcoordinates:
+    description: Broadcast your coordinates to all players
+    aliases: [ bc ]
+    console: false
+    player: true

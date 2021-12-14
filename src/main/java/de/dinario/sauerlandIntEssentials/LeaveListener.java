@@ -1,0 +1,31 @@
+package de.dinario.sauerlandIntEssentials;
+
+import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerQuitEvent;
+
+public class LeaveListener implements Listener {
+    private final String[] messages = {
+            ChatColor.LIGHT_PURPLE + "Tschüss " + ChatColor.GOLD + "%s" + ChatColor.LIGHT_PURPLE + ", war schön mit dir.",
+            ChatColor.GOLD + "%s" + ChatColor.LIGHT_PURPLE + " hat uns vorerst verlassen.",
+            ChatColor.LIGHT_PURPLE + "Mach's gut " + ChatColor.GOLD + "%s" + ChatColor.LIGHT_PURPLE + ", bis zum nächsten Mal!",
+            ChatColor.GOLD + "%s" + ChatColor.LIGHT_PURPLE + " hat genug für heute.",
+            ChatColor.LIGHT_PURPLE + "Bye bye " + ChatColor.GOLD + "%s",
+            ChatColor.LIGHT_PURPLE + "Bis bald " + ChatColor.GOLD + "%s" + ChatColor.LIGHT_PURPLE + ".",
+            ChatColor.LIGHT_PURPLE + "Verabschiedet euch von " + ChatColor.GOLD + "%s" + ChatColor.LIGHT_PURPLE + "!",
+            ChatColor.GOLD + "%s" + ChatColor.LIGHT_PURPLE + " hat gerade den Server verlassen."
+    };
+
+    @EventHandler
+    public void onPlayerLeave(PlayerQuitEvent playerQuitEvent) {
+        Player player = playerQuitEvent.getPlayer();
+        playerQuitEvent.setQuitMessage(getRandomQuitMessage(player.getName()));
+    }
+
+    private String getRandomQuitMessage(String playerName) {
+        int rnd = (int) (Math.random() * messages.length);
+        return String.format(messages[rnd], playerName);
+    }
+}
