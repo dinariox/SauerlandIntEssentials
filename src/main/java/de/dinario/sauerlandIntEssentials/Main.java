@@ -19,6 +19,7 @@ public final class Main extends JavaPlugin {
         pluginManager.registerEvents(new InventoryClickListener(), this);
         pluginManager.registerEvents(new ItemBreakingListener(), this);
         pluginManager.registerEvents(new BlockPlacedListener(), this);
+        pluginManager.registerEvents(new DestroySpawnerListener(), this);
 
         try {
             getCommand("broadcastcoordinates").setExecutor(new BroadcastCoordinatesCommand());
