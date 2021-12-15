@@ -29,7 +29,7 @@ public class LeaveListener implements Listener {
         // add 1 hour to the date
         date.setTime(date.getTime() + 3600000);
         String currentTime = formatter.format(date);
-        playerQuitEvent.setQuitMessage(ChatColor.DARK_GRAY + "[" + currentTime + "]" + getRandomQuitMessage(player.getName()));
+        playerQuitEvent.setQuitMessage(ChatColor.DARK_GRAY + "[" + currentTime + "] " + getRandomQuitMessage(player.getName()));
     }
 
     private String getRandomQuitMessage(String playerName) {

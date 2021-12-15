@@ -18,7 +18,7 @@ public class PlayerDeathListener implements Listener {
         // add 1 hour to the date
         date.setTime(date.getTime() + 3600000);
         String currentTime = formatter.format(date);
-        event.setDeathMessage(ChatColor.DARK_GRAY + "[" + currentTime + "]" + ChatColor.BLUE + "Oh no! " + ChatColor.RED + event.getDeathMessage());
+        event.setDeathMessage(ChatColor.DARK_GRAY + "[" + currentTime + "] " + ChatColor.BLUE + "Oh no! " + ChatColor.RED + event.getDeathMessage());
         // Tell the player where they died
         event.getEntity().sendMessage(ChatColor.GRAY + "You died at " + ChatColor.RED + event.getEntity().getLocation().getBlockX() + " " + event.getEntity().getLocation().getBlockY() + " " + event.getEntity().getLocation().getBlockZ());
     }

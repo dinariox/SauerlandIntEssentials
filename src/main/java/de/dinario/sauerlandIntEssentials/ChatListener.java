@@ -19,6 +19,6 @@ public class ChatListener implements Listener {
         // add 1 hour to the date
         date.setTime(date.getTime() + 3600000);
         String currentTime = formatter.format(date);
-        chatEvent.setFormat(ChatColor.GRAY + "[" + currentTime + "] " + ChatColor.BLUE + player.getName() + ChatColor.DARK_GRAY +  " » " + ChatColor.WHITE + message);
+        chatEvent.setFormat(ChatColor.DARK_GRAY + "[" + currentTime + "] " + ChatColor.BLUE + player.getName() + ChatColor.DARK_GRAY +  " » " + ChatColor.WHITE + message);
     }
 }

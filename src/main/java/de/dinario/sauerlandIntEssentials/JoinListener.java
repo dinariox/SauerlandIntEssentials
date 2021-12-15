@@ -32,7 +32,7 @@ public class JoinListener implements Listener {
         // add 1 hour to the date
         date.setTime(date.getTime() + 3600000);
         String currentTime = formatter.format(date);
-        playerJoinEvent.setJoinMessage(ChatColor.DARK_GRAY + "[" + currentTime + "]" + getRandomJoinMessage(player.getName()));
+        playerJoinEvent.setJoinMessage(ChatColor.DARK_GRAY + "[" + currentTime + "] " + getRandomJoinMessage(player.getName()));
     }
 
     private String getRandomJoinMessage(String playerName) {

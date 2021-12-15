@@ -20,7 +20,7 @@ public class BroadcastCoordinatesCommand implements CommandExecutor {
             // add 1 hour to the date
             date.setTime(date.getTime() + 3600000);
             String currentTime = formatter.format(date);
-            player.getServer().broadcastMessage(ChatColor.DARK_GRAY + "[" + currentTime + "]" + ChatColor.GOLD + player.getName() + ChatColor.DARK_GRAY + "'s coordinates are: " + ChatColor.RED + player.getLocation().getBlockX() + " " + ChatColor.GREEN + player.getLocation().getBlockY() + " " + ChatColor.BLUE + player.getLocation().getBlockZ());
+            player.getServer().broadcastMessage(ChatColor.DARK_GRAY + "[" + currentTime + "] " + ChatColor.GOLD + player.getName() + ChatColor.DARK_GRAY + "'s coordinates are: " + ChatColor.RED + player.getLocation().getBlockX() + " " + ChatColor.GREEN + player.getLocation().getBlockY() + " " + ChatColor.BLUE + player.getLocation().getBlockZ());
         } else {
             commandSender.sendMessage(String.format("%sCommand can only be executed by a player", ChatColor.RED));
         }
