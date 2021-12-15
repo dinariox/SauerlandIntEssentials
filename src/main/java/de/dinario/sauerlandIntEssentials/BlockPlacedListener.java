@@ -5,9 +5,12 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.block.Block;
+import org.bukkit.block.CreatureSpawner;
 
 import java.util.Objects;
 import java.util.ArrayList;
+
 public class BlockPlacedListener implements Listener {
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
@@ -42,6 +45,16 @@ public class BlockPlacedListener implements Listener {
                 event.getPlayer().getInventory().setItem(replaceItem, new ItemStack(Material.AIR));
             }
         }
+        Block block = event.getBlockPlaced();
+        if (block.getType().equals(Material.SPAWNER)) {
+            CreatureSpawner creatureSpawner = (CreatureSpawner) block.getState();
+            try {
+                creatureSpawner.setCreatureTypeByName(event.getItemInHand().getItemMeta().getLore().get(0).toLowerCase());
+            } catch (Exception e) {
+            }
+            creatureSpawner.update();
+        }
     }
 }
+
 
