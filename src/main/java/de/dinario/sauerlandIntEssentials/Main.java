@@ -7,6 +7,8 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.Collections;
+
 public final class Main extends JavaPlugin {
 
     @Override
@@ -31,9 +33,19 @@ public final class Main extends JavaPlugin {
         new BukkitRunnable() {
             @Override
             public void run() {
+                // loop through all online players and figure out how long the longest displayName is
+                int longestDisplayNameLength = 0;
                 for (Player player : getServer().getOnlinePlayers()) {
-                    String currentName = player.displayName().toString();
-                    player.setPlayerListName("[" + player.getPing() + "ms] " + ChatColor.WHITE + currentName);
+                    String displayName = player.getDisplayName();
+                    if (displayName.length() > longestDisplayNameLength) {
+                        longestDisplayNameLength = displayName.length();
+                    }
+                }
+
+                for (Player player : getServer().getOnlinePlayers()) {
+                    String currentName = player.getDisplayName();
+                    // fill up the displayName with spaces to make it the same length as the longest displayName + 1
+                    player.setPlayerListName(currentName + ChatColor.GRAY + " [" + player.getPing() + "ms]" + ChatColor.RESET);
                 }
             }
         }.runTaskTimer(this, 0L, 20L);

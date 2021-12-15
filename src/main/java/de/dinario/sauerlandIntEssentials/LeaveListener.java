@@ -6,6 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class LeaveListener implements Listener {
     private final String[] messages = {
             ChatColor.LIGHT_PURPLE + "Tschüss " + ChatColor.GOLD + "%s" + ChatColor.LIGHT_PURPLE + ", war schön mit dir.",
@@ -21,7 +24,12 @@ public class LeaveListener implements Listener {
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent playerQuitEvent) {
         Player player = playerQuitEvent.getPlayer();
-        playerQuitEvent.setQuitMessage(getRandomQuitMessage(player.getName()));
+        SimpleDateFormat formatter= new SimpleDateFormat("HH:mm");
+        Date date = new Date(System.currentTimeMillis());
+        // add 1 hour to the date
+        date.setTime(date.getTime() + 3600000);
+        String currentTime = formatter.format(date);
+        playerQuitEvent.setQuitMessage(ChatColor.DARK_GRAY + "[" + currentTime + "]" + getRandomQuitMessage(player.getName()));
     }
 
     private String getRandomQuitMessage(String playerName) {
