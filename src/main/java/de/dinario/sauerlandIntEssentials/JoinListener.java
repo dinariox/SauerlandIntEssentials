@@ -6,6 +6,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class JoinListener implements Listener {
     private final String[] messages = {
             ChatColor.GREEN + "Hey, seht wer da ist: " + ChatColor.GOLD + "%s!",
@@ -24,7 +27,12 @@ public class JoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent playerJoinEvent) {
         Player player = playerJoinEvent.getPlayer();
-        playerJoinEvent.setJoinMessage(getRandomJoinMessage(player.getName()));
+        SimpleDateFormat formatter= new SimpleDateFormat("HH:mm");
+        Date date = new Date(System.currentTimeMillis());
+        // add 1 hour to the date
+        date.setTime(date.getTime() + 3600000);
+        String currentTime = formatter.format(date);
+        playerJoinEvent.setJoinMessage(ChatColor.DARK_GRAY + "[" + currentTime + "] " + getRandomJoinMessage(player.getName()));
     }
 
     private String getRandomJoinMessage(String playerName) {
