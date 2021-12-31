@@ -25,6 +25,12 @@ public class BlockPlacedListener implements Listener {
         seeds.add(Material.NETHER_WART);
         seeds.add(Material.SWEET_BERRIES);
         seeds.add(Material.BONE_MEAL);
+        seeds.add(Material.EGG);
+        seeds.add(Material.COCOA_BEANS);
+        seeds.add(Material.CACTUS);
+        seeds.add(Material.SNOWBALL);
+
+
         if (event.getItemInHand().getAmount() == 1 && (event.getItemInHand().getType().isBlock() || seeds.contains(event.getItemInHand().getType()))) {
             int brokenItem = -1;
             int replaceItem = -1;
